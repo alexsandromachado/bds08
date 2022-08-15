@@ -1,0 +1,10 @@
+.chart-container {
+  margin-top: 10px;
+  height: 520px;
+}
+
+@media (min-width: 576px) {
+  .chart-container {
+    margin-top: 40px;
+  }
+}
