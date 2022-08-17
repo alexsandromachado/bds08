@@ -1,10 +1,60 @@
 .chart-container {
   margin-top: 10px;
-  height: 520px;
+}
+
+.info-chart-container {
+  padding: 35px 0 0 15px;
+  margin-bottom: 50px;
+  text-align: left;
+}
+
+.info-chart-container h3 {
+  font-size: 36px;
+}
+
+.info-chart-container span {
+  font-size: 18px;
+  color: var(--secondary-color);
+}
+
+.pie-chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 68px;
+}
+
+.apexcharts-legend.apexcharts-align-center {
+  flex-direction: column;
+  align-items: center;
 }
 
 @media (min-width: 576px) {
+  .info-chart-container {
+    padding: 40px 0 0 40px;
+  }
+}
+
+@media (min-width: 992px) {
   .chart-container {
-    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 0 40px;
+    max-width: 960px;
+    margin: 0 auto;
+    width: 99%;
+  }
+
+  .info-chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .pie-chart-container {
+    padding: 65px 0;
   }
 }

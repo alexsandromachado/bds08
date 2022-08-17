@@ -1,5 +1,4 @@
 .App {
-  text-align: center;
   padding: 10px;
 }
 
@@ -44,8 +43,10 @@
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
   .App {
-    padding: 40px 120px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }

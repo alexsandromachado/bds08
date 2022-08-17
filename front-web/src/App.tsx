@@ -10,7 +10,11 @@ function App() {
       <Header />
       <div className="App">
         <Filter />
-        <PieChartCard />
+        <PieChartCard
+          name="Lojas"
+          labels={['Uberlândia', 'Araguari', 'Uberaba']}
+          series={[40, 30, 30]}
+        />
       </div>
     </>
   );
