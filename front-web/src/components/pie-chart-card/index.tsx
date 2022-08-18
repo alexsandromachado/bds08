@@ -3,12 +3,12 @@ import { buildPieChartConfig } from './helpers';
 import './styles.css';
 
 type Props = {
-  labels: string[];
+  labels?: string[];
   name: string;
-  series: number[];
+  series?: number[];
 };
 
-function PieChartCard({ labels, name, series }: Props) {
+function PieChartCard({ labels = [], name, series = [] }: Props) {
   return (
     <div className="chart-container base-card">
       <div className="info-chart-container">

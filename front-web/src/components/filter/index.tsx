@@ -1,20 +1,40 @@
+import { useEffect, useState } from 'react';
 import Select from 'react-select';
+import { FilterData, Store } from '../../types';
+import { requestBackend } from '../../utils/request';
 import './styles.css';
 
-function Filter() {
-  const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-  ];
+type Props = {
+  onFilterChange: (filter: FilterData) => void;
+};
+
+function Filter({ onFilterChange }: Props) {
+  const options = [{ name: 'vanilla', id: 1 }];
+
+  const [selectStores, setSelectStores] = useState<Store[]>([]);
+  const [store, setStore] = useState<Store>();
+
+  const handleChangeStore = (value: Store) => {
+    const selectedStore = value as Store;
+    onFilterChange({ store: selectedStore });
+  };
+
+  useEffect(() => {
+    requestBackend({ url: '/stores' }).then((response) => {
+      setSelectStores(response.data);
+    });
+  }, []);
 
   return (
     <header className="filter-container base-card">
       <Select
-        options={options}
+        options={selectStores}
         isClearable
         placeholder="Loja"
         classNamePrefix="store-filter-select"
+        onChange={(value: Store | null) => handleChangeStore(value as Store)}
+        getOptionLabel={(store: Store) => store.name}
+        getOptionValue={(store: Store) => String(store.id)}
       />
     </header>
   );
