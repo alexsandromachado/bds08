@@ -9,10 +9,7 @@ type Props = {
 };
 
 function Filter({ onFilterChange }: Props) {
-  const options = [{ name: 'vanilla', id: 1 }];
-
   const [selectStores, setSelectStores] = useState<Store[]>([]);
-  const [store, setStore] = useState<Store>();
 
   const handleChangeStore = (value: Store) => {
     const selectedStore = value as Store;

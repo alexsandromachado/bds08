@@ -1,15 +1,16 @@
 import { useEffect, useMemo, useState } from 'react';
 import Header from './components/header';
 import Filter from './components/filter';
-import './App.css';
 import PieChartCard from './components/pie-chart-card';
-import { FilterData, PieChartConfig, SalesByGender } from './types';
+import { FilterData, PieChartConfig, SalesByGender, SumaryData } from './types';
 import { buildFilterParams, makeRequest } from './utils/request';
 import { buildSalesByGenderChart } from './helpers';
+import './App.css';
 
 function App() {
   const [filterData, setFilterData] = useState<FilterData>();
   const [salesByStore, setSalesByStore] = useState<PieChartConfig>();
+  const [totalSum, setTotalSum] = useState(0);
 
   const params = useMemo(() => buildFilterParams(filterData), [filterData]);
 
@@ -21,7 +22,18 @@ function App() {
         setSalesByStore(newSalesByStore);
       })
       .catch(() => {
-        console.log('Error to fetch sales by store');
+        console.log('Error to fetch sales by gender');
+      });
+  }, [params]);
+
+  useEffect(() => {
+    makeRequest
+      .get<SumaryData>('/sales/summary', { params })
+      .then((response) => {
+        setTotalSum(response.data.sum);
+      })
+      .catch(() => {
+        console.log('Error to fetch sales by date');
       });
   }, [params]);
 
@@ -34,7 +46,12 @@ function App() {
       <Header />
       <div className="App">
         <Filter onFilterChange={onFilterChange} />
-        <PieChartCard name="Lojas" labels={salesByStore?.labels} series={salesByStore?.series} />
+        <PieChartCard
+          name="Lojas"
+          labels={salesByStore?.labels}
+          series={salesByStore?.series}
+          totalSum={totalSum}
+        />
       </div>
     </>
   );

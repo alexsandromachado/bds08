@@ -1,4 +1,5 @@
 import ReactApexChart from 'react-apexcharts';
+import { formatPrice } from '../../utils/formatters';
 import { buildPieChartConfig } from './helpers';
 import './styles.css';
 
@@ -6,13 +7,14 @@ type Props = {
   labels?: string[];
   name: string;
   series?: number[];
+  totalSum: number;
 };
 
-function PieChartCard({ labels = [], name, series = [] }: Props) {
+function PieChartCard({ labels = [], name, series = [], totalSum }: Props) {
   return (
     <div className="chart-container base-card">
       <div className="info-chart-container">
-        <h3>R$ 746.484,00</h3>
+        <h3>{formatPrice(totalSum)}</h3>
         <span>Total de vendas</span>
       </div>
       <div className="pie-chart-container">

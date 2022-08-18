@@ -28,6 +28,5 @@ export const requestBackend = (config: AxiosRequestConfig) => {
       ...config.headers
     }
     : config.headers;
-
   return axios({ ...config, baseURL: BASE_URL, headers });
 };

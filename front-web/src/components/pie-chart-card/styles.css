@@ -23,6 +23,9 @@
   align-items: center;
   padding-bottom: 68px;
 }
+.apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center {
+  align-items: flex-start;
+}
 
 .apexcharts-legend.apexcharts-align-center {
   flex-direction: column;
@@ -48,7 +51,7 @@
   .info-chart-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     margin-bottom: 0;
     padding: 0;

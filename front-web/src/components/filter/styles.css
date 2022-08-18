@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   padding-left: 10px;
-  border: 1px solid #ffffff !important;
+  border: 1px solid var(--primary-color) !important;
   border-radius: 4px !important;
 }
 
@@ -16,10 +16,17 @@
   letter-spacing: -0.015em;
   color: #263238;
   border: 1px solid #e1e1e1 !important;
+  padding: 0;
+  margin: 0;
 }
 
 .store-filter-select__placeholder {
   color: var(--secondary-color);
+}
+
+.store-filter-select__value-container {
+  padding: 0 8px 00 !important;
+  margin: 0 !important;
 }
 
 .store-filter-select__menu {
